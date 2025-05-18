@@ -6,14 +6,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-
-enum StateCalendar {
-  ENABLE = 'enable',
-  DISABLED = 'disabled',
-  CONFIRMED = 'confirmed',
-  CANCELLED = 'cancelled',
-  COMPLETED = 'completed',
-}
+import { StateCalendar } from '../enum/stateCalendar.enum';
 
 @Entity({ name: 'calendar' })
 export class Calendar {
