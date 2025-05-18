@@ -1,15 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-export enum Role {
-  HAIRDRESSER = 'hairdresser',
-  ADMIN = 'admin',
-}
-
-export enum Type {
-  CUT = 'cut',
-  COLOR = 'color',
-  STYLING = 'styling',
-}
+import { Role } from '../enum/role.enum';
+import { Type } from '../enum/type.enum';
 
 @Entity({ name: 'hairdressers' })
 export class Hairdresser {
