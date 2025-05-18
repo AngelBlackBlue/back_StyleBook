@@ -35,7 +35,7 @@ export class Hairdresser {
   @Column({
     type: 'set',
     enum: Type,
-    default: [],
+    default: [Type.CUT],
   })
   type: Type[];
 
