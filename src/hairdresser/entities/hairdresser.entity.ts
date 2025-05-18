@@ -27,7 +27,6 @@ export class Hairdresser {
   picture: string;
 
   @Column({
-    type: 'enum',
     enum: Role,
     default: Role.HAIRDRESSER,
   })

@@ -20,13 +20,13 @@ export class Calendar {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column()
   day: Date;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   hour: string;
 
-  @Column({ type: 'enum', enum: StateCalendar, default: StateCalendar.ENABLE })
+  @Column({ enum: StateCalendar, default: StateCalendar.ENABLE })
   state: StateCalendar;
 
   @CreateDateColumn()
