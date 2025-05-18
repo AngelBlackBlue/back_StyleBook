@@ -1,37 +1,33 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
-enum StateCalendar {
-  ENABLE = 'enable',
-  DISABLED = 'disabled',
-  CONFIRMED = 'confirmed',
-  CANCELLED = 'cancelled',
-  COMPLETED = 'completed',
-}
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
+import { StateCalendar } from '../enum/stateCalendar.enum';
 
 @Entity({ name: 'calendar' })
 export class Calendar {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column()
   day: Date;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   hour: string;
 
-  @Column({ type: 'enum', enum: StateCalendar, default: StateCalendar.ENABLE })
+  @Column({ enum: StateCalendar, default: StateCalendar.ENABLE })
   state: StateCalendar;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @CreateDateColumn()
+  createdDate: Date;
 
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt: Date;
+  @UpdateDateColumn()
+  updatedDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @DeleteDateColumn()
   deletedAt: Date;
 }
