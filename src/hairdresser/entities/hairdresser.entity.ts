@@ -14,16 +14,16 @@ export class Hairdresser {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column()
   name: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: true })
+  @Column()
   nickname: string;
 
-  @Column({ type: 'varchar', length: 100, unique: true })
+  @Column()
   email: string;
 
-  @Column({ type: 'varchar', length: 150, nullable: true })
+  @Column()
   picture: string;
 
   @Column({
@@ -40,22 +40,22 @@ export class Hairdresser {
   })
   type: Type[];
 
-  @Column({ type: 'boolean', default: false })
+  @Column()
   toMorning: boolean;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripOneStart: string;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripOneEnd: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column()
   toAfternoon: boolean;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripTwoStart: string;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripTwoEnd: string;
 
   @CreateDateColumn()
