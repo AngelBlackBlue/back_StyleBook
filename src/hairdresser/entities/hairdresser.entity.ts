@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Role } from '../enum/role.enum';
 import { Type } from '../enum/type.enum';
 
@@ -51,16 +58,12 @@ export class Hairdresser {
   @Column({ type: 'time', nullable: true })
   stripTwoEnd: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @CreateDateColumn()
+  createdDate: Date;
 
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt: Date;
+  @UpdateDateColumn()
+  updatedDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @DeleteDateColumn()
   deletedAt: Date;
 }
