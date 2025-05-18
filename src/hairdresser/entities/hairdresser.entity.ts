@@ -1,5 +1,16 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+export enum Role {
+  HAIRDRESSER = 'hairdresser',
+  ADMIN = 'admin',
+}
+
+export enum Type {
+  CUT = 'cut',
+  COLOR = 'color',
+  STYLING = 'styling',
+}
+
 @Entity({ name: 'hairdressers' })
 export class Hairdresser {
   @PrimaryGeneratedColumn('uuid')
@@ -17,11 +28,19 @@ export class Hairdresser {
   @Column({ type: 'varchar', length: 150, nullable: true })
   picture: string;
 
-  @Column({ type: 'varchar', length: 20 })
-  role: string;
+  @Column({
+    type: 'enum',
+    enum: Role,
+    default: Role.HAIRDRESSER,
+  })
+  role: Role;
 
-  @Column({ type: 'varchar', length: 20 })
-  type: string;
+  @Column({
+    type: 'set',
+    enum: Type,
+    default: [],
+  })
+  type: Type[];
 
   @Column({ type: 'boolean', default: false })
   toMorning: boolean;
