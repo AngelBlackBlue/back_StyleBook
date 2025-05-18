@@ -7,6 +7,8 @@ const PORT = process.env.PORT_SERVER || 3000;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
+  app.setGlobalPrefix('api/v1');
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true, // Elimina propiedades no definidas en los DTOs

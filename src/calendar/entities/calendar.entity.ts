@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
 
 enum StateCalendar {
   ENABLE = 'enable',
@@ -22,16 +29,12 @@ export class Calendar {
   @Column({ type: 'enum', enum: StateCalendar, default: StateCalendar.ENABLE })
   state: StateCalendar;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @CreateDateColumn()
+  createdDate: Date;
 
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt: Date;
+  @UpdateDateColumn()
+  updatedDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @DeleteDateColumn()
   deletedAt: Date;
 }
