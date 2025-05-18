@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Role } from '../enum/role.enum';
 import { Type } from '../enum/type.enum';
 
@@ -7,20 +14,19 @@ export class Hairdresser {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column()
   name: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: true })
+  @Column()
   nickname: string;
 
-  @Column({ type: 'varchar', length: 100, unique: true })
+  @Column()
   email: string;
 
-  @Column({ type: 'varchar', length: 150, nullable: true })
+  @Column()
   picture: string;
 
   @Column({
-    type: 'enum',
     enum: Role,
     default: Role.HAIRDRESSER,
   })
@@ -33,34 +39,30 @@ export class Hairdresser {
   })
   type: Type[];
 
-  @Column({ type: 'boolean', default: false })
+  @Column()
   toMorning: boolean;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripOneStart: string;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripOneEnd: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column()
   toAfternoon: boolean;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripTwoStart: string;
 
-  @Column({ type: 'time', nullable: true })
+  @Column()
   stripTwoEnd: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @CreateDateColumn()
+  createdDate: Date;
 
-  @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt: Date;
+  @UpdateDateColumn()
+  updatedDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @DeleteDateColumn()
   deletedAt: Date;
 }
